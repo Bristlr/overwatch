@@ -1,0 +1,29 @@
+{
+  "name": "bristlrOverwatch",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bristlr/overwatch"
+  },
+  "dependencies": {
+    "express": "4.x",
+    "basic-auth": "1.x",
+    "request": "2.x",
+    "heroku-client": "1.x"
+  },
+  "devDependencies": {
+    "zombie": "*",
+    "mocha": "*",
+    "chai": "*",
+    "jshint": "*",
+    "request": "*",
+    "get": "*"
+  },
+  "engines": {
+    "node": "0.x.x",
+    "npm": "1.x.x"
+  },
+  "jshintConfig": {
+    "sub": true
+  }
+}
