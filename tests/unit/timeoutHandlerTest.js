@@ -115,6 +115,42 @@ test("Given a timeout happens once every 2 minutes, dont trigger the handler as 
 	done();
 });
 
+
+
+test("Given a two timeouts happens 5 minutes appart, trigger twice", function(done) {
+
+	restartedDyno = false;
+	restartCount = 0;
+	currentTimeInS = 0;
+
+	var timeoutHandler = new TimeoutHandler(fakeDate, fakeDynoRestarter);
+
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+
+	assert.equal(restartedDyno, 2);
+	assert.equal(restartCount, 1);
+
+	restartedDyno = false;
+	restartCount = 0;
+	currentTimeInS = 300;
+
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+	timeoutHandler.handle(2);
+
+	assert.equal(restartedDyno, 2);
+	assert.equal(restartCount, 1);
+
+	done();
+});
+
+
 var restartedDyno = false,
 	restartCount = 0;
 var fakeDynoRestarter = {
