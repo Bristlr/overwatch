@@ -14,3 +14,15 @@ Optional environment variables:
 * THRESHOLD_COUNT (default 5) - How many timeouts can happen in one period of time on one dyno
 * THRESHOLD_TIMESPAN (default 60000) - Given time period (in ms) to count events within
 * TIME_BETWEEN_RESTARTS (default 120000) - Minimum time (in ms) between restarts
+
+### Enable Heroku Log Drain on server you wish to monitor
+More info - [https://devcenter.heroku.com/articles/log-drains](https://devcenter.heroku.com/articles/log-drains)
+
+Environment variables for the overwatch app:
+
+* BASIC_AUTH_USERNAME - Username for basic auth
+* BASIC_AUTH_PASSWORD - Password for basic auth
+
+Log Drain setup for the app you are monitoring: 
+
+`heroku drains:add https://username:password@myoverwatchapp.herokuapp.com/logs -a myapp-being-monitored`
